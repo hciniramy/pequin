@@ -14,7 +14,7 @@ echo "installing PAPI"
 $TAR papi-5.4.1.tar.gz
 cd papi-5.4.1/src
 ./configure --prefix=$DEPS_DIR
-make
+make -j$(nproc)
 make install
 cd $UP
 
@@ -23,7 +23,7 @@ echo "installing libconfig"
 $TAR libconfig-1.4.8.tar.gz
 cd libconfig-1.4.8
 ./configure --prefix=$DEPS_DIR
-make
+make -j$(nproc)
 make install
 cd $UP
 
@@ -42,7 +42,7 @@ cp gcc6-workaround.patch kyotocabinet-1.2.76
 cd kyotocabinet-1.2.76
 patch -p1 < gcc6-workaround.patch
 ./configure --prefix=$DEPS_DIR
-make
+make -j$(nproc)
 make install
 cd $UP
 
@@ -50,7 +50,7 @@ cd $UP
 echo "installing leveldb"
 $TAR leveldb-1.10.0.tar.gz
 cd leveldb-1.10.0
-make
+make -j$(nproc)
 cp --preserve=links libleveldb.* $DEPS_DIR/lib
 cp -r include/leveldb $DEPS_DIR/include
 cd $UP
