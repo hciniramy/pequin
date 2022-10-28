@@ -66,5 +66,5 @@ git submodule init && git submodule update
 git apply libsnark_compilerflag.patch
 mkdir -p build && cd build
 cmake -DCMAKE_INSTALL_PREFIX=$DEPS_DIR -DWITH_PROCPS=OFF ..
-DESTDIR=$DEPS_DIR make install
+make install
 cd $UP
