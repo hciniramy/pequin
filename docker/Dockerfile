@@ -1,4 +1,7 @@
-FROM debian:jessie
+ARG BASE_IMAGE=debian:jessie
+#Note only jessie and trusty provide openjdk-7 and contain the supported clang/llvm versions
+#ARG BASE_IMAGE=ubuntu:trusty
+FROM $BASE_IMAGE
 
 ENV PEQUIN /opt/pequin
 RUN set -ex \
