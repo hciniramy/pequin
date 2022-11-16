@@ -1,0 +1,30 @@
+diff --git a/libsnark/reductions/r1cs_to_qap/r1cs_to_qap.tcc b/libsnark/reductions/r1cs_to_qap/r1cs_to_qap.tcc
+index 2b45c25..25139db 100644
+--- a/libsnark/reductions/r1cs_to_qap/r1cs_to_qap.tcc
++++ b/libsnark/reductions/r1cs_to_qap/r1cs_to_qap.tcc
+@@ -213,7 +213,7 @@ qap_witness<FieldT> r1cs_to_qap_witness_map(const r1cs_constraint_system<FieldT>
+     libff::enter_block("Call to r1cs_to_qap_witness_map");
+ 
+     /* sanity check */
+-    assert(cs.is_satisfied(primary_input, auxiliary_input));
++    // assert(cs.is_satisfied(primary_input, auxiliary_input));
+ 
+     const std::shared_ptr<libfqfft::evaluation_domain<FieldT> > domain = libfqfft::get_evaluation_domain<FieldT>(cs.num_constraints() + cs.num_inputs() + 1);
+ 
+diff --git a/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc b/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc
+index 0acb190..6c7af40 100644
+--- a/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc
++++ b/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc
+@@ -403,9 +403,9 @@ r1cs_gg_ppzksnark_proof<ppT> r1cs_gg_ppzksnark_prover(const r1cs_gg_ppzksnark_pr
+ 
+     /* We are dividing degree 2(d-1) polynomial by degree d polynomial
+        and not adding a PGHR-style ZK-patch, so our H is degree d-2 */
+-    assert(!qap_wit.coefficients_for_H[qap_wit.degree()-2].is_zero());
+-    assert(qap_wit.coefficients_for_H[qap_wit.degree()-1].is_zero());
+-    assert(qap_wit.coefficients_for_H[qap_wit.degree()].is_zero());
++    // assert(!qap_wit.coefficients_for_H[qap_wit.degree()-2].is_zero());
++    // assert(qap_wit.coefficients_for_H[qap_wit.degree()-1].is_zero());
++    // assert(qap_wit.coefficients_for_H[qap_wit.degree()].is_zero());
+     libff::leave_block("Compute the polynomial H");
+ 
+ #ifdef DEBUG

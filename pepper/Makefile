@@ -17,7 +17,7 @@ IFLAGS += -I../thirdparty/libsnark -I../thirdparty/libsnark/depends/libff -I../t
 
 LDFLAGS = -L$(DEPSDIR)/lib
 LDFLAGS += -L../thirdparty/libsnark/build/libsnark -L../thirdparty/libsnark/build/depends/libff/libff -L../thirdparty/libsnark/build/depends
-LDFLAGS += -lsnark -lff -lzm -lgmp -lgmpxx -lpapi -lrt -lleveldb -lkyotocabinet -Wl,-rpath,$(DEPSDIR)/lib/
+LDFLAGS += -lsnark -lff -lzm -lgmp -lgmpxx -lpapi -lrt -lleveldb -lkyotocabinet  -fopenmp -Wl,-rpath,$(DEPSDIR)/lib/
 
 GENSRCDIR = gen
 BINDIR = bin

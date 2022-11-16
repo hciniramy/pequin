@@ -57,14 +57,19 @@ cd $UP
 
 #libsnark
 echo "installing libsnark"
+#apt-get update
+#apt-get install -y --no-install-recommends libomp-dev
 [ ! -d libsnark ] && git clone https://github.com/scipr-lab/libsnark.git
 cp libsnark_compilerflag.patch libsnark
+cp libsnark_assertions.patch libsnark
 cd libsnark
-git checkout dc78fdae02b437bb6c838a82f9261c49bbd7723e && git reset --hard dc78fdae02b437bb6c838a82f9261c49bbd7723e
+#git checkout dc78fdae02b437bb6c838a82f9261c49bbd7723e && git reset --hard dc78fdae02b437bb6c838a82f9261c49bbd7723e
+git checkout 2af440246fa2c3d0b1b0a425fb6abd8cc8b9c54d && git reset --hard 2af440246fa2c3d0b1b0a425fb6abd8cc8b9c54d
 cp ../libsnark_gitmodules .gitmodules
 git submodule init && git submodule update
 git apply libsnark_compilerflag.patch
+git apply libsnark_assertions.patch
 mkdir -p build && cd build
-cmake -DCMAKE_INSTALL_PREFIX=$DEPS_DIR -DWITH_PROCPS=OFF ..
+cmake -DCMAKE_INSTALL_PREFIX=$DEPS_DIR -DMULTICORE=OFF -DPERFORMANCE=OFF -DWITH_PROCPS=OFF ..
 make install
 cd $UP
