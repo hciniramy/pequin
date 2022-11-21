@@ -12,7 +12,7 @@ RUN set -ex \
     zlib1g zlib1g-dev libssl-dev cmake git pkg-config \
     " \
     && apt-get update \
-    && apt-get install -y --no-install-recommends $buildDeps \
+    && apt-get install -y --force-yes --no-install-recommends $buildDeps \
     && rm -rf /var/lib/apt/lists/*
 
 COPY . $PEQUIN
