@@ -4,6 +4,10 @@ ARG BASE_IMAGE=debian:jessie
 FROM $BASE_IMAGE
 
 ENV PEQUIN /opt/pequin
+RUN rm /etc/apt/sources.list
+RUN echo "deb http://archive.debian.org/debian jessie main" >> /etc/apt/sources.list.d/jessie.list
+RUN echo "deb http://archive.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list.d/jessie.list
+
 RUN set -ex \
     && buildDeps=" \
     python2.7 libpython2.7 libpython2.7-dev openjdk-7-jdk \
